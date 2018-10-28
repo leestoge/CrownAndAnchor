@@ -3,7 +3,7 @@ package crownandanchor;
 public abstract class Bets 
 {
 	
-	protected static char _betType;
+	protected char _betType;
 	protected String _whatOn;
 	protected int _amount;
 	

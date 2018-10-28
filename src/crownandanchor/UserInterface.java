@@ -92,13 +92,11 @@ public class UserInterface
 
 	public String getWhatOn() 
 	{	
-		boolean valid = true;
-			char input = 0;
-			String whatOn = "";
+		char input = 0;
+		String whatOn = "";
 			
 			do 
 			{		
-				valid = true;
 				System.out.println("");
 				System.out.println("Please place your bets by entering the number next to your desired suit:-");
 				System.out.println("");
@@ -116,16 +114,14 @@ public class UserInterface
 					 if (input > '6' || input < '1') 
 					 {
 						 System.out.println("ERROR: Invalid input");
-							valid = false;
 					 }					 
 				}
 				else 
 				{
 					System.out.println("ERROR: Invalid input");
-					valid = false;
 					sc.next();
 				}
-			} while (valid == false);
+			} while (false);
 			
 			switch(input) {//converts input choice into string
 			case '1': whatOn =  "Crown"; break;

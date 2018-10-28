@@ -217,7 +217,7 @@ public class Game
 	    }
 	    else 
 	    {
-	    	System.exit(0);
+	    	return;
 	    }
 	
 	}
