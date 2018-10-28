@@ -61,8 +61,8 @@ public class Game
 		try 
 		{
 			
-			FileInputStream inFile = new java.io.FileInputStream(name + ".ser");
-			ObjectInputStream inPlayer = new java.io.ObjectInputStream(inFile);
+			FileInputStream inFile = new FileInputStream(name + ".ser");
+			ObjectInputStream inPlayer = new ObjectInputStream(inFile);
 			aPlayer = (Player) inPlayer.readObject();
 			inPlayer.close();
 			inFile.close();
@@ -204,8 +204,8 @@ public class Game
 	    {
 	    	try 
 	    	{
-	    		FileOutputStream fileOut = new java.io.FileOutputStream(aPlayer.getName().toLowerCase() + ".ser");
-	    		ObjectOutputStream outPlayer = new java.io.ObjectOutputStream(fileOut);
+	    		FileOutputStream fileOut = new FileOutputStream(aPlayer.getName().toLowerCase() + ".ser");
+	    		ObjectOutputStream outPlayer = new ObjectOutputStream(fileOut);
 	    		outPlayer.writeObject(aPlayer);
 	    		outPlayer.close();
 	    		fileOut.close();
