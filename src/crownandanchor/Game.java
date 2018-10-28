@@ -9,7 +9,7 @@ public class Game
 	private CADice[] dice;
 	private ArrayList<Bets> bets;
 	private Player aPlayer;
-	UserInterface ui = new UserInterface();
+	private UserInterface ui = new UserInterface();
 		
 	public void play() throws ClassNotFoundException, IOException
 	{
@@ -61,8 +61,8 @@ public class Game
 		try 
 		{
 			
-			java.io.FileInputStream inFile = new java.io.FileInputStream(name + ".ser");
-			java.io.ObjectInputStream inPlayer = new java.io.ObjectInputStream(inFile);
+			FileInputStream inFile = new java.io.FileInputStream(name + ".ser");
+			ObjectInputStream inPlayer = new java.io.ObjectInputStream(inFile);
 			aPlayer = (Player) inPlayer.readObject();
 			inPlayer.close();
 			inFile.close();
@@ -78,7 +78,7 @@ public class Game
 			{
 				ui.displayMessageln(aPlayer.getName() + "'s game loaded.\nStake: " + aPlayer.getStake() + "\nBanker: " + aPlayer.getBanker() + "\nRounds played: " + aPlayer.getRound());
 			}
-		} catch (java.io.FileNotFoundException e) 
+		} catch (FileNotFoundException e) 
 		{
 			ui.displayMessageln("No save file found for this name");
 			ui.displayMessageln("Creating new save game...");
@@ -128,7 +128,8 @@ public class Game
 			break;			
 			case '3': AllIn tempAi = new AllIn(whatOn, amt);					 
 			  		  bets.add(tempAi); updatePlayerStake(amt, 0); 
-			break;			
+			break;
+			default:
 			}
 			ui.displayMessageln("");
 			ui.displayMessageln("bet of £" + amt + " placed on " + whatOn);
@@ -203,14 +204,13 @@ public class Game
 	    {
 	    	try 
 	    	{
-	    		java.io.FileOutputStream fileOut = new java.io.FileOutputStream(aPlayer.getName().toLowerCase() + ".ser");
-	    		java.io.ObjectOutputStream outPlayer = new java.io.ObjectOutputStream(fileOut);
+	    		FileOutputStream fileOut = new java.io.FileOutputStream(aPlayer.getName().toLowerCase() + ".ser");
+	    		ObjectOutputStream outPlayer = new java.io.ObjectOutputStream(fileOut);
 	    		outPlayer.writeObject(aPlayer);
 	    		outPlayer.close();
 	    		fileOut.close();
-	    		System.exit(0);
 	    	}
-	    	catch (java.io.IOException e) 
+	    	catch (IOException e) 
 	    	{
 	      		e.printStackTrace();
 	      	}

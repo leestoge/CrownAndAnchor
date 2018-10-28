@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserInterface 
 {
 
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 
 	public String getPlayerName() //get player name and ensure that it's valid
 	{
@@ -63,11 +63,8 @@ public class UserInterface
 	public char getBetType() //get bet type
 	{
 		char input = '0';
-		boolean valid = true;
-		
 		do 
 		{	
-			valid = true;
 			System.out.println("");
 			System.out.println("Please choose your bet type by entering the number next to your desired bet type:- ");
 			System.out.println("");
@@ -82,15 +79,13 @@ public class UserInterface
 				 if (input > '3' || input < '1') 
 				 {
 					 System.out.println("Invalid input.");
-					 valid = false;
 				 }
 			}
 			else 
 			{
 				System.out.println("Invalid input.");
-				valid = false;
 			}
-		} while (valid == false);
+		} while (false);
 		
 		return input;		
 	}
@@ -138,7 +133,8 @@ public class UserInterface
 			case '3': whatOn =  "Diamond"; break;
 			case '4': whatOn =  "Club"; break;
 			case '5': whatOn =  "Spade"; break;
-			case '6': whatOn =  "Heart"; break;		
+			case '6': whatOn =  "Heart"; break;	
+			default:
 			}
 			return whatOn;
 	}
@@ -157,6 +153,7 @@ public class UserInterface
 		break;
 		case '3': min = 3; 
 		break;
+		default:
 		}
 		
 		do 
@@ -173,14 +170,10 @@ public class UserInterface
 				amount = sc.nextInt();
 				if(amount >= min) 
 				{
-					if(amount - stake <= 0) 
-					{
-						//do nothing
-					}
-					else 
+					if(amount - stake > 0) 
 					{
 						System.out.println("ERROR: You don't have that much in your stake.");
-						valid = false;			
+						valid = false;		
 					}
 				}
 				else 
